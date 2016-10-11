@@ -5,7 +5,7 @@ rm(list = ls())
 library(dplyr)
 
 #Reading label names
-feature.names = read.csv("UCI HAR Dataset/features.txt",
+feature.names = read.table("UCI HAR Dataset/features.txt",
                          sep = "",
                          header = FALSE,
                          colClasses = c("NULL", NA),
@@ -20,7 +20,7 @@ feature.names = as.vector(feature.names$FeatureNames)
 ###########################################################
 
 #Reading training set predictors
-training.set = read.csv("UCI HAR Dataset/train/X_train.txt",
+training.set = read.table("UCI HAR Dataset/train/X_train.txt",
                       sep = "",
                       header = FALSE,
                       col.names = feature.names)
@@ -32,13 +32,13 @@ training.set = tbl_df(training.set)
 training.set = training.set[,grep("mean\\(|std\\(", feature.names)]
 
 #Reading and adding labels for registers 
-training.set["activityType"] = read.csv("UCI HAR Dataset/train/y_train.txt",
+training.set["activityType"] = read.table("UCI HAR Dataset/train/y_train.txt",
                                       sep = "",
                                       header = FALSE,
                                       stringsAsFactors = FALSE)
 
 #Reading subjects and adding it to the training set
-training.set["subjectID"] = read.csv(file = "UCI HAR Dataset/train/subject_train.txt",
+training.set["subjectID"] = read.table(file = "UCI HAR Dataset/train/subject_train.txt",
                                    sep = "",
                                    header = FALSE)
 
@@ -50,7 +50,7 @@ training.set = select(training.set,68, 1:67)
 ###########################################################
 
 #Reading training set predictors
-testing.set = read.csv("UCI HAR Dataset/test/X_test.txt",
+testing.set = read.table("UCI HAR Dataset/test/X_test.txt",
                         sep = "",
                         header = FALSE,
                         col.names = feature.names)
@@ -62,13 +62,13 @@ testing.set = tbl_df(testing.set)
 testing.set = testing.set[,grep("mean\\(|std\\(", feature.names)]
 
 #Reading and adding labels for registers 
-testing.set["activityType"] = read.csv("UCI HAR Dataset/test/y_test.txt",
+testing.set["activityType"] = read.table("UCI HAR Dataset/test/y_test.txt",
                                         sep = "",
                                         header = FALSE,
                                        stringsAsFactors = FALSE)
 
 #Reading subjects and adding it to the training set
-testing.set["subjectID"] = read.csv(file = "UCI HAR Dataset/test/subject_test.txt",
+testing.set["subjectID"] = read.table(file = "UCI HAR Dataset/test/subject_test.txt",
                                      sep = "",
                                      header = FALSE)
 
@@ -130,5 +130,5 @@ new.data = summarise_each(new.data, funs(mean))
 if(!dir.exists("Tidy_Data"))
   dir.create("Tidy_Data")
 
-write.csv(tidy.set, "Tidy_Data/tidy_set.csv", row.names = FALSE)
-write.csv(new.data, "Tidy_Data/mean_measurements_tidy_set.csv", row.names = FALSE)
+write.table(tidy.set, "Tidy_Data/tidy_set.txt", row.names = FALSE)
+write.table(new.data, "Tidy_Data/mean_measurements_tidy_set.txt", row.names = FALSE)

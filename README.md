@@ -16,10 +16,10 @@ The sensor signals (accelerometer and gyroscope) were pre-processed by applying 
 
 + **README.md**: explain the dataset and the relation between files.
 
-+ **CodeBook.md**: explain the structure about data sets **tidy_set.csv** and **mean_measurements_tidy_set.csv** that are inside **Tidy_Data** directory.
++ **CodeBook.md**: explain the structure about data sets **tidy_set.txt** and **mean_measurements_tidy_set.txt** that are inside **Tidy_Data** directory.
 
 + **run_analysis.R**: a documented R script that performs ativities to accomplish the objectives for the process of extraction and cleaning the data.
 
 + **Tidy_Data**: a directory where the tidy sets were written.
 
-+ **UCI HAR Dataset**: the original directory of **Human Activity Recognition Using Smartphones Dataset - Version 1.0**. This was includedin case you want more documentation or perform annother activities using this data set.
++ **UCI HAR Dataset**: the original directory of **Human Activity Recognition Using Smartphones Dataset - Version 1.0**. This was included in case you want more documentation or perform another activities using this data set.
